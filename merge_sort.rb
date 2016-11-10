@@ -14,33 +14,38 @@
   #// repeat the process, but don't reuse elements,
   #// until you have pushed all the elements from
   #// leftArr and rightArr onto newArr in sorted order
-  #// return newArr
-#}
+  #// return newArr #} def merge_sort(array)
 
 def merge_sort(array)
- 
-  return array if array.length == 1
-  middle = array.length/2
-  left_half = merge_sort(array[0..middle-1])
-  right_half = merge_sort(array[middle..-1])
+  return array if array.length <= 1
+
+  r = l = array.length / 2
+  array.length.even? ? l -= 1 : r += 1
+
+  left_half = merge_sort(array[0..l])
+  right_half = merge_sort(array[r..array.length])
 
   merge(left_half, right_half)
-
 end
 
 def merge(array_1, array_2)
-  # p array_1
-  # p array_2
-  combined_array = []
+  p array_1
+  p array_2
 
-  while array_1.length > 0 && array_2.length > 0
-    if array_1[0] >= array_2[0]
-      smaller_value = array_2.shift
-    else
-      smaller_value = array_1.shift
-    end  
-    combined_array.push(smaller_value)
-  end
+  #combined_array = []
+
+  #if array_1 && array_2
+    #until array_1.empty? || array_2.empty?
+      #if array_1[0] >= array_2[0]
+        #smaller_value = array_2.shift
+      #else
+        #smaller_value = array_1.shift
+      #end
+      #combined_array.push(smaller_value)
+    #end
+  #else
+    #array_1 || array_2
+  #end
 end
 
-p merge_sort([1,3,7,2,5])
+merge_sort([1,3,7,2,5])
