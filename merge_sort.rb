@@ -29,23 +29,25 @@ def merge_sort(array)
 end
 
 def merge(array_1, array_2)
-  p array_1
-  p array_2
-
-  #combined_array = []
-
-  #if array_1 && array_2
-    #until array_1.empty? || array_2.empty?
-      #if array_1[0] >= array_2[0]
-        #smaller_value = array_2.shift
-      #else
-        #smaller_value = array_1.shift
-      #end
-      #combined_array.push(smaller_value)
-    #end
-  #else
-    #array_1 || array_2
-  #end
+  combined_array = []
+  until array_1.empty? || array_2.empty?
+    if array_1[0] >= array_2[0]
+      smaller_value = array_2.shift
+    else
+      smaller_value = array_1.shift
+    end
+    combined_array.push(smaller_value)
+  end
+  trailing_values = array_1.empty? ? array_2 : array_1
+  combined_array << trailing_values
+  combined_array.flatten
 end
 
-merge_sort([1,3,7,2,5])
+def merge_tests
+  p merge_sort([1,3,7,2,5])
+  p merge_sort([1,-3,-7,2,5])
+  p merge_sort([1,1,27,5,5])
+  p merge_sort([1,3,0,2,9])
+end
+
+merge_tests
